@@ -1,9 +1,9 @@
 {
   "manifestVersion": 1,
-  "id": "apim",
+  "id": "spapim",
   "name": "API Management Suite",
-  "version": "3.5.0",
-  "publisher": "stephane-eyskens",
+  "version": "3.7.0",
+  "publisher": "sorinpasa",
   "tags": [
     "API",
     "Security"
