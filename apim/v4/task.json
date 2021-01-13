@@ -201,6 +201,7 @@
       "defaultValue": "None",
       "options": {
         "None": "None",
+        "Artifact":"Artifact",
         "CacheLookup": "Cache lookup",
         "CORS": "CORS",
         "Custom": "Custom",
@@ -211,6 +212,14 @@
         "QuotaByKey": "QuotaByKey",
         "HeaderCheck": "HeaderCheck"
       }
+    },
+    {
+      "name": "policyArtifact",
+      "type": "string",
+      "label": "Policy Artifact",
+      "helpMarkDown": "Policy Artifact. For instance $(System.DefaultWorkingDirectory)/<yourpolicy.xml>",
+      "defaultValue": "",
+      "visibleRule": "TemplateSelector = Artifact"
     },    
     {
       "name": "None",
