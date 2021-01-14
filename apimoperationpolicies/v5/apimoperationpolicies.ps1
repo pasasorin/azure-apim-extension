@@ -14,6 +14,17 @@ This task creates an APIM product.
 	$operation=Get-VstsInput -Name OperationName
 	$SelectedTemplate=Get-VstsInput -Name TemplateSelector
 	$CurrentRevision=Get-VstsInput -Name CurrentRevision
+	
+	if($SelectedTemplate -eq "Artifact")
+	{
+		$policyPath = Get-VstsInput -Name policyArtifact
+		try {
+			Assert-VstsPath -LiteralPath $policyPath -PathType Leaf
+			$PolicyContent = Get-Content "$($policyPath)" -Raw
+		} catch {
+		Write-Error "Invalid file location $($policyPath)"
+		  }
+	}
 	if($SelectedTemplate -eq "RateAndQuota")
 	{
 		$PolicyContent = Get-VstsInput -Name RateAndQuota

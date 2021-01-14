@@ -20,6 +20,16 @@ try {
 	$UseProductCreatedByPreviousTask = Get-VstsInput -Name UseProductCreatedByPreviousTask
 	$SelectedTemplate = Get-VstsInput -Name TemplateSelector
 
+	if($SelectedTemplate -eq "Artifact")
+	{
+		$policyPath = Get-VstsInput -Name policyArtifact
+		try {
+			Assert-VstsPath -LiteralPath $policyPath -PathType Leaf
+			$PolicyContent = Get-Content "$($policyPath)" -Raw
+		} catch {
+		Write-Error "Invalid file location $($policyPath)"
+		  }
+	}
 	if($SelectedTemplate -eq "CacheLookup")
 	{
 		$PolicyContent = Get-VstsInput -Name CacheLookup

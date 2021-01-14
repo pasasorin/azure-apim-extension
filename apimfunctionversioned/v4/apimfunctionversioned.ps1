@@ -22,8 +22,18 @@ Prerequisite to using this task: VSTS agents must be able to connect to both the
 		$products = $(Get-VstsInput -Name product1).Split([Environment]::NewLine) 
 		$path = Get-VstsInput -Name pathapi
 		$UseProductCreatedByPreviousTask=Get-VstsInput -Name UseProductCreatedByPreviousTask
-		$SelectedTemplate=Get-VstsInput -Name TemplateSelector
 
+		$SelectedTemplate=Get-VstsInput -Name TemplateSelector
+		if($SelectedTemplate -eq "Artifact")
+		{
+			$policyPath = Get-VstsInput -Name policyArtifact
+			try {
+				Assert-VstsPath -LiteralPath $policyPath -PathType Leaf
+				$PolicyContent = Get-Content "$($policyPath)" -Raw
+			} catch {
+			Write-Error "Invalid file location $($policyPath)"
+	  		}
+		}
 		if($SelectedTemplate -eq "CacheLookup")
 		{
 			$PolicyContent = Get-VstsInput -Name CacheLookup

@@ -22,6 +22,16 @@ for each and every function to inject the function's code as query string parame
 		$UseProductCreatedByPreviousTask=Get-VstsInput -Name UseProductCreatedByPreviousTask
 		$path = Get-VstsInput -Name pathapi
 		$SelectedTemplate=Get-VstsInput -Name TemplateSelector
+		if($SelectedTemplate -eq "Artifact")
+		{
+			$policyPath = Get-VstsInput -Name policyArtifact
+			try {
+				Assert-VstsPath -LiteralPath $policyPath -PathType Leaf
+				$PolicyContent = Get-Content "$($policyPath)" -Raw
+			} catch {
+			Write-Error "Invalid file location $($policyPath)"
+	  		}
+		}
 		if($SelectedTemplate -eq "CORS")
 		{
 			$PolicyContent = Get-VstsInput -Name CORS

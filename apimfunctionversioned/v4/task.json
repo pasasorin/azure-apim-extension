@@ -11,7 +11,7 @@
   ],
   "demands": [],
   "version": {
-    "Major": "3",
+    "Major": "4",
     "Minor": "0",
     "Patch": "1"
   },
@@ -130,6 +130,7 @@
       "defaultValue": "None",
       "options": {
         "None": "None",
+        "Artifact":"Artifact",
         "CacheLookup": "Cache Lookup",
         "CORS": "CORS",
         "Custom": "Custom",
@@ -151,6 +152,14 @@
       "defaultValue": "<policies>\n\t<inbound>\n\t\t<base />\n\t</inbound>\n\t<backend>\n\t\t<base />\n\t</backend>\n\t<outbound>\n\t\t<base />\n\t</outbound>\n\t<on-error>\n\t\t<base />\n\t</on-error>\n</policies>",
       "helpMarkDown": "",
       "visibleRule": "TemplateSelector = NAN"
+    },
+    {
+      "name": "policyArtifact",
+      "type": "string",
+      "label": "Policy Artifact",
+      "helpMarkDown": "Policy Artifact. For instance $(System.DefaultWorkingDirectory)/<yourpolicy.xml>",
+      "defaultValue": "",
+      "visibleRule": "TemplateSelector = Artifact"
     },
     {
       "name": "Custom",

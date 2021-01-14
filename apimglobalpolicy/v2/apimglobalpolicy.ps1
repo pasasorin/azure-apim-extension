@@ -12,9 +12,19 @@ shared VNET
 	    $arm=Get-VstsInput -Name ConnectedServiceNameARM
 		$Endpoint = Get-VstsEndpoint -Name $arm -Require			
 		$portal=Get-VstsInput -Name ApiPortalName
-		$rg=Get-VstsInput -Name ResourceGroupName 		
+		$rg=Get-VstsInput -Name ResourceGroupName 
+				
 		$SelectedTemplate=Get-VstsInput -Name TemplateSelector		
-
+		if($SelectedTemplate -eq "Artifact")
+		{
+			$policyPath = Get-VstsInput -Name policyArtifact
+			try {
+				Assert-VstsPath -LiteralPath $policyPath -PathType Leaf
+				$PolicyContent = Get-Content "$($policyPath)" -Raw
+			} catch {
+			Write-Error "Invalid file location $($policyPath)"
+	  		}
+		}
 		if($SelectedTemplate -eq "CacheLookup")
 		{
 			$PolicyContent = Get-VstsInput -Name CacheLookup

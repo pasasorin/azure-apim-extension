@@ -11,9 +11,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "4",
+    "Major": "5",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "API Management - Set or update an operation policy $(message)",
@@ -83,6 +83,7 @@
       "defaultValue": "None",
       "options": {
         "None": "None",
+        "Artifact":"Artifact",
         "Basic": "Basic",
         "Custom": "Custom",
         "JWT": "JWT",
@@ -103,6 +104,14 @@
       "defaultValue": "<policies>\n\t<inbound>\n\t\t<base />\n\t</inbound>\n\t<backend>\n\t\t<base />\n\t</backend>\n\t<outbound>\n\t\t<base />\n\t</outbound>\n\t<on-error>\n\t\t<base />\n\t</on-error>\n</policies>",
       "helpMarkDown": "",
       "visibleRule": "TemplateSelector = NAN"
+    },
+    {
+      "name": "policyArtifact",
+      "type": "string",
+      "label": "Policy Artifact",
+      "helpMarkDown": "Policy Artifact. For instance $(System.DefaultWorkingDirectory)/<yourpolicy.xml>",
+      "defaultValue": "",
+      "visibleRule": "TemplateSelector = Artifact"
     },
     {
       "name": "Custom",
