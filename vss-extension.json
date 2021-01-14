@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
-  "id": "spapim",
-  "name": "SP API Management Suite",
+  "id": "spapimv2",
+  "name": "SP v2 API Management Suite",
   "version": "3.7.0",
   "publisher": "sorinpasa",
   "tags": [
